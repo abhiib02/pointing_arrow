@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+ <style>
+ body{
+  margin:0px;
+  overflow:hidden;
+  background:black;
+}
+
+.pointing_arrow{
+  
+  filter:invert(1);
+}
+.center{
+    display:grid;;
+    place-items:center;
+    height:100vh;
+}
+ </style>
+</head>
+<body>
+ 
+ <!--
+pythagoreon theorem 
+distance between points
+           __________________
+distance =/ (base^2) + (heigth^2)
+
+and
+
+to find the correct distance we need to add radius of both point for ex :- a point has 5px radius b point has b point has 25px radius
+
+so the 25px + 5px = 30px
+
+-->
+
+
+<div class="center">
+<img class="pointing_arrow" width="20px" height="20px" src="https://cdn-icons-png.flaticon.com/512/60/60683.png">
+
+<img class="pointing_arrow" width="20px" height="20px" src="https://cdn-icons-png.flaticon.com/512/60/60683.png">
+
+<img class="pointing_arrow" width="20px" height="20px" src="https://cdn-icons-png.flaticon.com/512/60/60683.png">
+
+<img class="pointing_arrow" width="20px" height="20px" src="https://cdn-icons-png.flaticon.com/512/60/60683.png">
+
+
+</div>
+ 
+ 
+ <script>
+  function pointingArrow(el){
+ 
+  let arrows = document.querySelectorAll(el);
+      arrows.forEach((arrow)=>{
+          window.addEventListener('mousemove',(e)=>{
+              let cursor_x = e.clientX;
+              let cursor_y = e.clientY;
+              let x = arrow.offsetLeft+arrow.offsetWidth / 2;
+              let y = arrow.offsetTop+arrow.offsetHeight / 2;; 
+              let base,height,hypo,alpha,beta;
+              base= x - cursor_x;
+              height= y - cursor_y;
+              hypo=Math.sqrt((base*base)+(height*height));
+              alpha=+Math.asin(height/hypo) * (180/3.14);
+                //arrow.style.width= hypo*0.1+"px";
+                //arrow.style.height= hypo*0.1+"px";
+              if(base>0 && height>0){
+                arrow.style.transform = 'rotate('+(alpha-45)+'deg)';
+              }
+              if(base>0 && height<0){
+                arrow.style.transform = 'rotate('+(alpha-45)+'deg)';
+              }
+              if(base<0 && height>0){
+                arrow.style.transform = 'rotate('+(-(alpha-135))+'deg)';
+              }
+              if(base<0 && height<0){
+                arrow.style.transform = 'rotate('+(-(alpha-135))+'deg)';
+              }
+          })
+        })
+   }
+
+pointingArrow('.pointing_arrow')
+ </script>
+</body>
+</html>
