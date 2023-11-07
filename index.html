@@ -43,10 +43,10 @@ so the 25px + 5px = 30px
   function generateArrow(number){
    let arrow_wrapper = document.querySelector('#arrow_wrapper');
    let i;
-   let arrowele = document.createElement('img');
-   arrowele.classList.add('pointing_arrow');
-   arrowele.setAttribute('src','https://cdn-icons-png.flaticon.com/512/60/60683.png');
    for(i=0;i<number;i++){
+     let arrowele = document.createElement('img');
+     arrowele.classList.add('pointing_arrow');
+     arrowele.setAttribute('src','https://cdn-icons-png.flaticon.com/512/60/60683.png');
     arrow_wrapper.appendChild(arrowele);
    }
   }
